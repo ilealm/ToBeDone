@@ -4,20 +4,19 @@ import React, {useState}  from "react";
 // TODO add spred arg ... to accept the args. ...task, location
 function TaskItem(props){
     const API_SERVER_BASE = process.env.REACT_APP_API_SERVER_BASE
-    const API_SERVER_DELETE = process.env.REACT_APP_API_SERVER_DELETE
-    const API_SERVER_UPDATE = process.env.REACT_APP_API_SERVER_PUT
+    const API_SERVER_RESOURCE = process.env.REACT_APP_API_SERVER_RESOURCE    
     const [location, setLocation] = useState(props.task.location)
 
 
     const deleteTaskHandler = (task) => {
-        axios.delete(API_SERVER_BASE + API_SERVER_DELETE + `${task}`)
+        axios.delete(API_SERVER_BASE + API_SERVER_RESOURCE + `${task}`)
         .then(res => console.log(res.data))
         .catch(error => console.error(error))
     // .finally(() => console.log('done'));
     }
 
     const updateTaskHandler = (task) =>{
-        axios.put(API_SERVER_BASE + API_SERVER_UPDATE + `${task}?location=${location}`)
+        axios.put(API_SERVER_BASE + API_SERVER_RESOURCE + `${task}?location=${location}`)
         .then(res => console.log(res.data))
         .catch(error => console.error(error))
     }

@@ -9,7 +9,7 @@ import TaskView from './components/TaskListView';
 function App() {
   const API_SERVER_BASE = process.env.REACT_APP_API_SERVER_BASE
   const API_SERVER_GET_ALL = process.env.REACT_APP_API_SERVER_GET_ALL
-  const API_SERVER_POST = process.env.REACT_APP_API_SERVER_POST
+  const API_SERVER_RESOURCE = process.env.REACT_APP_API_SERVER_RESOURCE  
 
   const [taskList, setTaskList] = useState([{}])
   const [task, setTask] = useState('')
@@ -25,7 +25,7 @@ function App() {
 
   // Post a Task
   const addTaskHandler = () => {
-    axios.post(API_SERVER_BASE + API_SERVER_POST, { 'task':task, 'location':location })
+    axios.post(API_SERVER_BASE + API_SERVER_RESOURCE, { 'task':task, 'location':location })
       .then(res => {
         console.log(res)
       })
